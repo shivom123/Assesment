@@ -1,0 +1,101 @@
+{% load static %}
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script src="{% static 'js/forms_validation.js' %}"></script>
+
+
+
+
+
+
+
+
+
+
+
+<div class="container register">
+   <div class="row">
+      <div class="col-md-3 register-left">
+         <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+         <h3>Welcome</h3>
+         <!-- <input type="submit" name="" value="Login"/><br/> -->
+      </div>
+      <div class="col-md-9 register-right">
+         <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+            <li class="nav-item">
+               <a class="nav-link active" href="/">Home</a>
+            </li>
+         </ul>
+         <div class="tab-content" id="myTabContent">
+            <div class="tab-panel" id="profile-detail" role="tabpanel" aria-labelledby="profile-tab">
+               <h3  class="register-heading">Profile Detail</h3>
+
+<div class="row register-form">
+      <div class="col-lg-5 col-md-6">
+        <div class="mb-2">
+          <img class="w-100" src="{{profile_data.profile_image.url}}" width="150" alt="">
+        </div>
+        <div class="mb-2 d-flex">
+          <h4 class="font-weight-normal">{{profile_data.username}}</h4>
+          <div class="social d-flex ml-auto">
+
+ 
+
+              <a href="#" class="text-muted mr-1">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="text-muted mr-1">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="text-muted mr-1">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="text-muted">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </div>
+        </div>
+        
+      </div>
+      <div class="col-lg-7 col-md-6 pl-xl-3">
+          <div class="mb-2">
+          <ul class="list-unstyled">
+            <li class="media">
+              <span class="w-25 text-black font-weight-normal">Username:</span>
+              <label class="media-body">{{profile_data.username}}</label>
+            </li>
+             <li class="media">
+              <span class="w-25 text-black font-weight-normal">First Name: </span>
+              <label class="media-body">{{profile_data.first_name}}</label>
+            </li>
+            <li class="media">
+              <span class="w-25 text-black font-weight-normal">Last Name: </span>
+              <label class="media-body">{{profile_data.last_name}}</label>
+            </li>
+            <li class="media">
+              <span class="w-25 text-black font-weight-normal">Email: </span>
+              <label class="media-body">{{profile_data.email}}</label>
+            </li>
+          </ul>
+        </div>
+        <!-- <h5 class="font-weight-normal">Biography of Paul Flavius</h5>
+          
+        <p>Along with your plans, you should consider developing an action orientation that will keep you motivated to move forward at all times. This requires a little self-discipline, but is a crucial component to achievement of any kind. Before starting any new activity, ask yourself if that activity will move you closer to your goals. If the answer is no, you may want to reconsider doing it at that time.</p>
+        
+        
+        <h5 class="font-weight-normal">Personal Experience</h5> -->
+      </div>
+   </div>
+
+
+               
+               
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
