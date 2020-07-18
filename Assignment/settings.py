@@ -11,9 +11,11 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import json
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+config = json.loads(open('configuration/assignment.env.json').read())
 
 
 # Quick-start development settings - unsuitable for production
@@ -84,27 +86,17 @@ DATABASES = {
 }
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': config['DB_ENGINE'],
-#         'NAME': config['DB_NAME'],
-#         'USER': config['DB_USER'],
-#         'PASSWORD': config['DB_PASSWORD'],
-#         'HOST': config['DB_HOST'],
-#         'PORT': config['DB_PORT'],
-#         }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME':  'testing',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost',
-        'PORT': 5432,
+        'ENGINE': config['DB_ENGINE'],
+        'NAME': config['DB_NAME'],
+        'USER': config['DB_USER'],
+        'PASSWORD': config['DB_PASSWORD'],
+        'HOST': config['DB_HOST'],
+        'PORT': config['DB_PORT'],
         }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -153,14 +145,14 @@ USE_TZ = True
 # MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media/profile/img')
 
-AWS_ACCESS_KEY_ID = 'AKIAZP3Z32NFHZWCTKVB'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'gkp-meter'
+AWS_ACCESS_KEY_ID = config['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = config['AWS_SECRET_ACCESS_KEY']
+AWS_STORAGE_BUCKET_NAME = config['AWS_STORAGE_BUCKET_NAME']
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
-AWS_LOCATION = 'static'
+AWS_LOCATION = config['AWS_LOCATION']
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'staticfiles/static'),
@@ -170,13 +162,12 @@ AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
 
-STATIC_ROOT = 'staticfiles'
+STATIC_ROOT = config['STATIC_ROOT']
 STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = config['STATICFILES_STORAGE']
 
 PUBLIC_MEDIA_LOCATION = 'media'
 MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, PUBLIC_MEDIA_LOCATION)
 
-# DEFAULT_FILE_STORAGE = 'gkpBackend.storage_backends.MediaStorage'
 
-DEFAULT_FILE_STORAGE = 'Assignment.storage_backends.MediaStorage'
+DEFAULT_FILE_STORAGE = config['DEFAULT_FILE_STORAGE']
